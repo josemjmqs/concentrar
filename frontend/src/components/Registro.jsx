@@ -23,7 +23,7 @@ function Registro({ volverAlLogin }) {
     <div className="registro">
       <div className="registro-contenedor">
         <div className="registro-encabezado">
-          <h1>Concentra</h1>
+          <h1>Concentrar</h1>
           <h2>Crear cuenta</h2>
           <p>Crea tu cuenta y comienza a organizar tu tiempo.</p>
         </div>
