@@ -1,11 +1,13 @@
 .encabezado {
-  position: relative;
-
+  position: sticky;
+  top: 0;
+  z-index: 100;
   display: flex;
   justify-content: center;
   align-items: center;
-
   margin-bottom: 32px;
+  padding: 12px 0;
+  background-color: #f9fafb;
 }
 
 .encabezado h1 {
