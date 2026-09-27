@@ -12,7 +12,7 @@ self.addEventListener("activate", (event) => {
 
 self.addEventListener("push", (event) => {
   let datos = {
-    titulo: "FocusFlow",
+    titulo: "Concentra",
     mensaje: "Terminó tu temporizador.",
   };
 
