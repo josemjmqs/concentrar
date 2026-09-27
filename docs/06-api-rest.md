@@ -1,6 +1,6 @@
 # API REST
 
-FocusFlow utiliza una API REST para comunicar el frontend con el backend. La API recibe y responde datos en formato JSON.
+Concentra utiliza una API REST para comunicar el frontend con el backend. La API recibe y responde datos en formato JSON.
 
 Los endpoints protegidos requieren autenticación mediante JWT. El token debe enviarse en el encabezado:
 
@@ -50,7 +50,7 @@ Ejemplo:
 | -------- | --------- | --------------------------------- |
 | id       | integer   | Identificador único de la sesión  |
 | inicio   | timestamp | Fecha y hora de inicio            |
-| fin      | timestamp | Fecha y hora de finalización      |
+| fin       | timestamp | Fecha y hora de finalización      |
 | duracion | integer   | Duración de la sesión en segundos |
 | estado   | varchar   | Estado actual de la sesión        |
 
@@ -244,4 +244,3 @@ La API puede utilizar los siguientes códigos según el resultado de la solicitu
 | 401 | Falta autenticación o el token no es válido |
 | 404 | Recurso no encontrado |
 | 500 | Error interno del servidor |
-
