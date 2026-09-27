@@ -112,7 +112,7 @@ Ejemplos de operaciones disponibles:
 ## Estructura del proyecto
 
 ```text
-focusflow/
+concentra/
 │
 ├── backend/
 │   ├── src/
