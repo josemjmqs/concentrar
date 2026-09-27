@@ -22,7 +22,7 @@ function Login({ onLogin, crearCuenta }) {
     <div className="login">
       <div className="login-contenedor">
         <div className="login-encabezado">
-          <h1>Concentra</h1>
+          <h1>Concentrar</h1>
           <h2>Iniciar sesión</h2>
           <p>Organiza tu tiempo y mejora tu concentración.</p>
         </div>
