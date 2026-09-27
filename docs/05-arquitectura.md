@@ -2,7 +2,7 @@
 
 ## Arquitectura general
 
-Concentra utiliza una arquitectura cliente-servidor de tres capas:
+Concentrar utiliza una arquitectura cliente-servidor de tres capas:
 
 - **Frontend:** React + Vite.
 - **Backend:** Node.js + Express.
@@ -112,7 +112,7 @@ Ejemplos de operaciones disponibles:
 ## Estructura del proyecto
 
 ```text
-concentra/
+concentrar/
 │
 ├── backend/
 │   ├── src/
