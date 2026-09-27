@@ -74,7 +74,7 @@ function App() {
     return (
       <div className="pagina-historial">
         <div className="encabezado">
-          <h1>Concentra</h1>
+          <h1>Concentrar</h1>
         </div>
 
         <button
@@ -95,7 +95,7 @@ function App() {
   return (
     <>
       <div className="encabezado">
-        <h1>Concentra</h1>
+        <h1>Concentrar</h1>
 
         <Menu
           mostrarHistorial={() => setMostrarHistorial(true)}
