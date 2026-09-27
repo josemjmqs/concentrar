@@ -1,4 +1,4 @@
-# Concentra
+# Concentrar
 
 Aplicación web full stack de productividad enfocada en mejorar y medir la concentración mediante sesiones de trabajo y descanso basadas en la técnica Pomodoro.
 
@@ -8,7 +8,7 @@ Aplicación web full stack de productividad enfocada en mejorar y medir la conce
 
 ## 📋 Descripción
 
-Concentra permite registrar sesiones de concentración, configurar períodos personalizados de trabajo y descanso y consultar estadísticas e historial para realizar un seguimiento del tiempo dedicado a la concentración.
+Concentrar permite registrar sesiones de concentración, configurar períodos personalizados de trabajo y descanso y consultar estadísticas e historial para realizar un seguimiento del tiempo dedicado a la concentración.
 
 El proyecto fue desarrollado de principio a fin como una aplicación web full stack y cuenta con una versión desplegada y funcional en producción.
 
@@ -60,7 +60,7 @@ El frontend se comunica con el backend mediante solicitudes HTTP a la API REST.
 ## 📁 Estructura del proyecto
 
 ```text
-concentra/
+concentrar/
 ├── frontend/
 ├── backend/
 ├── database/
@@ -72,7 +72,7 @@ concentra/
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/josemjmqs/concentra.git
+git clone https://github.com/josemjmqs/concentrar.git
 cd concentra
 ```
 
