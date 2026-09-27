@@ -60,7 +60,7 @@ El frontend se comunica con el backend mediante solicitudes HTTP a la API REST.
 ## 📁 Estructura del proyecto
 
 ```text
-focusflow/
+concentra/
 ├── frontend/
 ├── backend/
 ├── database/
@@ -72,8 +72,8 @@ focusflow/
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/josemjmqs/focusflow.git
-cd focusflow
+git clone https://github.com/josemjmqs/concentra.git
+cd concentra
 ```
 
 ### 2. Instalar dependencias del frontend
