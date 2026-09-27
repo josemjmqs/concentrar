@@ -63,7 +63,9 @@ self.addEventListener("notificationclick", (event) => {
           return;
         }
 
-        await cliente.focus();
+        if (!accion) {
+          await cliente.focus();
+        }
 
         cliente.postMessage({
           tipo: "accion-notificacion",
