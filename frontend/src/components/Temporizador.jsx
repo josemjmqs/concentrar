@@ -139,7 +139,6 @@ function Temporizador({ actualizarDatos }) {
           notificacion.close();
         }
       });
-
     } catch (error) {
       console.error("❌ Error eliminando notificaciones:", error);
     }
@@ -503,13 +502,14 @@ function Temporizador({ actualizarDatos }) {
     }
   }
 
-  function terminarDescansoManual() {
+  async function terminarDescansoManual() {
     setTerminando(true);
 
     try {
       setError("");
       setAlarmaActiva(false);
       detenerAlarma();
+      await eliminarNotificaciones();
 
       // Detener el descanso
       setActivo(false);
@@ -810,7 +810,6 @@ function Temporizador({ actualizarDatos }) {
       );
 
       localStorage.setItem("modoTemporizador", "descanso");
-
     } catch (error) {
       console.error("Error iniciando descanso:", error);
 
