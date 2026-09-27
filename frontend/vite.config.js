@@ -13,8 +13,8 @@ export default defineConfig({
       filename: "sw.js",
 
       manifest: {
-        name: "Concentra",
-        short_name: "Concentra",
+        name: "Concentrar",
+        short_name: "Concentrar",
         description: "Temporizador Pomodoro para mejorar la concentración",
         theme_color: "#4f46e5",
         background_color: "#ffffff",
