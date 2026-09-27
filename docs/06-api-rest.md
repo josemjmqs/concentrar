@@ -1,6 +1,6 @@
 # API REST
 
-Concentra utiliza una API REST para comunicar el frontend con el backend. La API recibe y responde datos en formato JSON.
+Concentrar utiliza una API REST para comunicar el frontend con el backend. La API recibe y responde datos en formato JSON.
 
 Los endpoints protegidos requieren autenticación mediante JWT. El token debe enviarse en el encabezado:
 
