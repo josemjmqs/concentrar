@@ -5,8 +5,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-bottom: 32px;
-  padding: 12px 0;
+  padding: 20px 0;
   background-color: #f9fafb;
 }
 
@@ -57,10 +56,6 @@
 /* Responsive */
 
 @media (max-width: 600px) {
-  .encabezado {
-    margin-bottom: 24px;
-  }
-
   .encabezado .menu {
     right: 4px;
   }
