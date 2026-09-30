@@ -4,7 +4,7 @@ Aplicación web full stack de productividad enfocada en mejorar y medir la conce
 
 ## 🚀 Demo
 
-**Aplicación:** https://focusflow-inky-theta.vercel.app
+**Aplicación:** https://concentrar.vercel.app
 
 ## 📋 Descripción
 
@@ -73,7 +73,7 @@ concentrar/
 
 ```bash
 git clone https://github.com/josemjmqs/concentrar.git
-cd concentra
+cd concentrar
 ```
 
 ### 2. Instalar dependencias del frontend

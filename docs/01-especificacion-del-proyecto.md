@@ -69,7 +69,6 @@ En versiones posteriores se podrán incorporar funcionalidades como:
 
 * React
 * Vite
-* React Router
 * JavaScript
 * HTML5
 * CSS
