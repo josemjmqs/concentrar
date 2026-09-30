@@ -129,3 +129,7 @@ La aplicación se encuentra funcional y continúa evolucionando mediante mejoras
 ### Historial
 
 ![Historial](docs/images/historial.jpg)
+
+## 🔗 Contacto
+
+**LinkedIn:** https://www.linkedin.com/in/josé-ignacio-díaz-hormazábal-9b515143b
