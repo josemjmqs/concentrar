@@ -44,11 +44,14 @@ La aplicación cuenta actualmente con las siguientes funcionalidades:
 * Registro persistente del historial de sesiones.
 * Visualización del historial con fecha, duración y estado de las sesiones.
 * Estadísticas de concentración para períodos diarios, semanales y mensuales.
+* Visualización del tiempo de concentración por día mediante una vista semanal y una vista mensual.
 * Notificaciones al finalizar los períodos del temporizador.
 * Persistencia de parte del estado del temporizador y configuración mediante localStorage.
 * Progressive Web App (PWA) instalable desde el navegador.
 
 La duración configurada para el período de concentración funciona como una referencia del temporizador. La sesión no se finaliza automáticamente al llegar a cero, ya que el usuario decide cuándo terminarla.
+
+Las estadísticas se calculan a partir de las sesiones completadas del usuario autenticado y utilizan la zona horaria `America/Santiago`. La vista semanal muestra los siete días de la semana actual y la vista mensual muestra todos los días del mes actual.
 
 ---
 
