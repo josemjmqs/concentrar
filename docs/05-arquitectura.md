@@ -55,7 +55,7 @@ Node.js + Express
 
 - Exponer la API REST.
 - Registrar y finalizar sesiones.
-- Gestionar cancelación y restauración de sesiones.
+- Gestionar cancelación, restauración y edición de duración de sesiones.
 - Consultar historial y estadísticas.
 - Gestionar registro e inicio de sesión.
 - Generar y verificar tokens JWT.
@@ -103,7 +103,7 @@ Ejemplos de operaciones disponibles:
 - Crear una sesión.
 - Finalizar una sesión.
 - Consultar sesiones.
-- Cancelar y restaurar sesiones.
+- Cancelar, restaurar y editar la duración de sesiones.
 - Consultar una sesión en progreso.
 - Consultar estadísticas.
 
