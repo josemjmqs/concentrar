@@ -189,3 +189,22 @@ La aplicación debe poder instalarse como Progressive Web App (PWA) desde un nav
 - Las estadísticas se calculan únicamente sobre sesiones del usuario autenticado.
 - La configuración del temporizador se mantiene separada por usuario.
 - Las estadísticas utilizan la zona horaria de Chile (`America/Santiago`).
+
+
+---
+
+## RF-15: Editar la duración de una sesión completada
+
+El usuario debe poder editar la duración de una sesión que se encuentre en estado `completada`.
+
+### Flujo básico
+
+1. El usuario selecciona **"Editar"** en una sesión completada del historial.
+2. La aplicación permite introducir una nueva duración en minutos.
+3. El usuario selecciona **"Guardar"**.
+4. El frontend envía la nueva duración al backend.
+5. El backend verifica que la sesión pertenezca al usuario autenticado y que se encuentre en estado `completada`.
+6. El sistema actualiza la duración de la sesión.
+7. Las estadísticas se actualizan utilizando la nueva duración.
+
+Las sesiones `en_progreso` y `cancelada` no pueden editarse mediante esta funcionalidad.
