@@ -7,6 +7,7 @@ import "./Estadisticas.css";
 
 function Estadisticas({ actualizar }) {
   const [datos, setDatos] = useState(null);
+  const [vista, setVista] = useState("semanal");
 
   useEffect(() => {
     const cargarEstadisticas = () => {
@@ -54,6 +55,10 @@ function Estadisticas({ actualizar }) {
     return <p>Cargando...</p>;
   }
 
+  function obtenerNumeroDia(fecha) {
+    return Number(fecha.split("-")[2]);
+  }
+
   function obtenerNombreDia(fecha) {
     const [año, mes, dia] = fecha.split("-");
 
@@ -64,10 +69,10 @@ function Estadisticas({ actualizar }) {
     });
   }
 
-  const tiempoMaximo = Math.max(
-    ...datos.tiempoPorDia.map((dia) => dia.tiempo),
-    1,
-  );
+  const datosGrafico =
+    vista === "semanal" ? datos.tiempoPorDia : datos.tiempoPorDiaMes;
+
+  const tiempoMaximo = Math.max(...datosGrafico.map((dia) => dia.tiempo), 1);
 
   return (
     <div className="estadisticas">
@@ -91,11 +96,33 @@ function Estadisticas({ actualizar }) {
         </div>
       </div>
 
-      <section className="estadisticas-semana">
-        <h3>Concentración esta semana</h3>
+      <section className="estadisticas-grafico">
+        <div className="estadisticas-grafico-encabezado">
+          <h3>
+            {vista === "semanal"
+              ? "Concentración esta semana"
+              : "Concentración este mes"}
+          </h3>
 
-        <div className="grafico">
-          {datos.tiempoPorDia.map((dia) => {
+          <div className="selector-vista">
+            <button
+              className={vista === "semanal" ? "activo" : ""}
+              onClick={() => setVista("semanal")}
+            >
+              Semanal
+            </button>
+
+            <button
+              className={vista === "mensual" ? "activo" : ""}
+              onClick={() => setVista("mensual")}
+            >
+              Mensual
+            </button>
+          </div>
+        </div>
+
+        <div className={`grafico ${vista}`}>
+          {datosGrafico.map((dia) => {
             const altura = (dia.tiempo / tiempoMaximo) * 200;
 
             return (
@@ -106,7 +133,11 @@ function Estadisticas({ actualizar }) {
 
                 <div className="barra" style={{ height: `${altura}px` }} />
 
-                <span className="barra-dia">{obtenerNombreDia(dia.dia)}</span>
+                <span className="barra-dia">
+                  {vista === "semanal"
+                    ? obtenerNombreDia(dia.dia)
+                    : obtenerNumeroDia(dia.dia)}
+                </span>
               </div>
             );
           })}

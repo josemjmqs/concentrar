@@ -5,7 +5,7 @@
 /* Títulos */
 
 .estadistica-hoy h3,
-.estadisticas-semana h3 {
+.estadisticas-grafico h3 {
   margin: 0 0 20px;
   text-align: center;
   font-size: 18px;
@@ -47,7 +47,7 @@
 
 /* Gráfico semanal */
 
-.estadisticas-semana {
+.estadisticas-grafico {
   margin-top: 24px;
   padding: 24px;
 
@@ -58,6 +58,46 @@
   box-sizing: border-box;
 }
 
+.estadisticas-grafico-encabezado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.selector-vista {
+  display: flex;
+  gap: 4px;
+  padding: 3px;
+
+  border-radius: 8px;
+
+  background: #f3f4f6;
+}
+
+.selector-vista button {
+  padding: 6px 10px;
+
+  border: 0;
+  border-radius: 6px;
+
+  background: transparent;
+  color: #6b7280;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.selector-vista button.activo {
+  background: #ffffff;
+  color: #111827;
+
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.08);
+}
+
 .grafico {
   display: flex;
   align-items: flex-end;
@@ -66,6 +106,16 @@
   height: 250px;
   padding: 20px 8px 0;
   box-sizing: border-box;
+}
+
+.grafico.mensual {
+  justify-content: flex-start;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.grafico.mensual .barra-contenedor {
+  flex: 0 0 28px;
 }
 
 .barra-contenedor {
@@ -149,4 +199,17 @@
   .barra-dia {
     font-size: 12px;
   }
+}
+
+.estadisticas-grafico-encabezado {
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.selector-vista {
+  align-self: center;
+}
+
+.grafico.mensual .barra-contenedor {
+  flex-basis: 24px;
 }

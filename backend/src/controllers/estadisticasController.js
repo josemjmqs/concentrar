@@ -66,6 +66,32 @@ export const obtenerEstadisticas = async (req, res) => {
       ["completada", usuarioId],
     );
 
+    const resultadoPorDiaMes = await pool.query(
+      `SELECT
+        dias.dia::date AS dia,
+        COALESCE(SUM(s.duracion), 0) AS tiempo
+      FROM generate_series(
+        DATE_TRUNC(
+          'month',
+          (CURRENT_TIMESTAMP AT TIME ZONE 'America/Santiago')::date
+        ),
+        (
+          DATE_TRUNC(
+            'month',
+            (CURRENT_TIMESTAMP AT TIME ZONE 'America/Santiago')::date
+          ) + INTERVAL '1 month - 1 day'
+        ),
+        INTERVAL '1 day'
+      ) AS dias(dia)
+      LEFT JOIN sesiones s
+        ON (s.inicio AT TIME ZONE 'America/Santiago')::date = dias.dia::date
+        AND s.estado = $1
+        AND s.usuario_id = $2
+      GROUP BY dias.dia
+      ORDER BY dias.dia;`,
+      ["completada", usuarioId],
+    );
+
     const resultadoCantidad = await pool.query(
       `SELECT COUNT(*) AS sesiones_completadas
        FROM sesiones
@@ -97,6 +123,11 @@ export const obtenerEstadisticas = async (req, res) => {
       sesionesHoy: Number(resultadoSesionesHoy.rows[0].sesiones_hoy) || 0,
 
       tiempoPorDia: resultadoPorDia.rows.map((fila) => ({
+        dia: fila.dia.toISOString().split("T")[0],
+        tiempo: Number(fila.tiempo) || 0,
+      })),
+
+      tiempoPorDiaMes: resultadoPorDiaMes.rows.map((fila) => ({
         dia: fila.dia.toISOString().split("T")[0],
         tiempo: Number(fila.tiempo) || 0,
       })),
