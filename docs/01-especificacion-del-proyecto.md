@@ -2,7 +2,7 @@
 
 ## 1. Nombre del proyecto
 
-**Concentra**
+**Concentrar**
 
 ---
 
@@ -14,7 +14,7 @@ Desarrollar una aplicación web de productividad que permita organizar sesiones 
 
 ## 3. Problema que resuelve
 
-Muchas personas tienen dificultades para mantener la concentración durante períodos prolongados o no tienen una forma sencilla de registrar cuánto tiempo dedican a sus actividades. Concentra busca resolver este problema proporcionando un temporizador de concentración, registro de sesiones y herramientas para visualizar el tiempo acumulado.
+Muchas personas tienen dificultades para mantener la concentración durante períodos prolongados o no tienen una forma sencilla de registrar cuánto tiempo dedican a sus actividades. Concentrar busca resolver este problema proporcionando un temporizador de concentración, registro de sesiones y herramientas para visualizar el tiempo acumulado.
 
 ---
 
