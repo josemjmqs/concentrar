@@ -149,9 +149,12 @@ La aplicación muestra:
 - Tiempo de concentración de este mes.
 - Cantidad total de sesiones completadas.
 - Cantidad de sesiones completadas hoy.
-- Distribución del tiempo de concentración por día durante la semana.
+- Distribución del tiempo de concentración por día durante la semana actual.
+- Distribución del tiempo de concentración por día durante el mes actual.
 
 Las estadísticas consideran únicamente sesiones con estado `completada`.
+
+La aplicación permite alternar entre una vista semanal y una vista mensual para visualizar la distribución diaria del tiempo de concentración.
 
 Las estadísticas diarias, semanales y mensuales utilizan la fecha de inicio de la sesión y la zona horaria `America/Santiago`.
 
