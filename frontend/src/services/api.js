@@ -79,6 +79,19 @@ export async function finalizarSesion(id, duracion, fin) {
   });
 }
 
+export async function editarDuracion(id, duracion) {
+  return realizarPeticion(`${API_URL}/sesiones/${id}/duracion`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${obtenerToken()}`,
+    },
+    body: JSON.stringify({
+      duracion,
+    }),
+  });
+}
+
 export const cancelarSesion = async (id) => {
   return realizarPeticion(`${API_URL}/sesiones/${id}/cancelar`, {
     method: "PATCH",

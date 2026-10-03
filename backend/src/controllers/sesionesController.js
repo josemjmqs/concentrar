@@ -159,6 +159,65 @@ export const finalizarSesion = async (req, res) => {
   }
 };
 
+export const editarDuracion = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { duracion } = req.body;
+    const usuarioId = req.usuario.id;
+
+    if (!/^\d+$/.test(id) || Number(id) <= 0) {
+      return res.status(400).json({
+        mensaje: "El ID de la sesión no es válido",
+      });
+    }
+
+    if (!Number.isInteger(duracion) || duracion < 0) {
+      return res.status(400).json({
+        mensaje: "La duración debe ser un número entero mayor o igual a 0",
+      });
+    }
+
+    const resultado = await pool.query(
+      `SELECT *
+       FROM sesiones
+       WHERE id = $1
+       AND usuario_id = $2`,
+      [id, usuarioId],
+    );
+
+    if (resultado.rows.length === 0) {
+      return res.status(404).json({
+        mensaje: "La sesión no existe",
+      });
+    }
+
+    const sesion = resultado.rows[0];
+
+    if (sesion.estado !== "completada") {
+      return res.status(409).json({
+        mensaje: "Solo se pueden editar sesiones completadas",
+      });
+    }
+
+    const resultadoActualizado = await pool.query(
+      `UPDATE sesiones
+       SET duracion = $1
+       WHERE id = $2
+       AND usuario_id = $3
+       RETURNING *`,
+      [duracion, id, usuarioId],
+    );
+
+    res.json(resultadoActualizado.rows[0]);
+  } catch (error) {
+    console.error(error);
+
+    res.status(500).json({
+      mensaje: "Error al editar la duración de la sesión",
+    });
+  }
+};
+
 export const cancelarSesion = async (req, res) => {
   try {
     const { id } = req.params;

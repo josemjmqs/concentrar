@@ -3,12 +3,15 @@ import {
   obtenerSesiones,
   cancelarSesion,
   restaurarSesion,
+  editarDuracion,
 } from "../services/api";
 import { formatearDuracion } from "../utils/formatearDuracion";
 import "./Historial.css";
 
-function Historial({ actualizar, cambiarActualizacion }) {
+function Historial({ actualizar, cambiarActualizacion, volver }) {
   const [sesiones, setSesiones] = useState([]);
+  const [sesionEditando, setSesionEditando] = useState(null);
+  const [nuevaDuracion, setNuevaDuracion] = useState("");
 
   useEffect(() => {
     obtenerSesiones().then((resultado) => {
@@ -36,6 +39,37 @@ function Historial({ actualizar, cambiarActualizacion }) {
     setSesiones(resultado);
   }
 
+  function iniciarEdicion(sesion) {
+    setSesionEditando(sesion.id);
+    setNuevaDuracion(Math.floor(sesion.duracion / 60));
+  }
+
+  async function handleEditarDuracion(id) {
+    const minutos = Number(nuevaDuracion);
+
+    if (!Number.isInteger(minutos) || minutos < 0) {
+      return;
+    }
+
+    const duracion = minutos * 60;
+
+    await editarDuracion(id, duracion);
+
+    cambiarActualizacion();
+
+    const resultado = await obtenerSesiones();
+
+    setSesiones(resultado);
+
+    setSesionEditando(null);
+    setNuevaDuracion("");
+  }
+
+  function cancelarEdicion() {
+    setSesionEditando(null);
+    setNuevaDuracion("");
+  }
+
   function formatearFechaHora(fecha) {
     const fechaLocal = new Date(fecha);
 
@@ -47,8 +81,13 @@ function Historial({ actualizar, cambiarActualizacion }) {
 
   return (
     <div className="historial">
-      <h2 className="historial-titulo">Historial</h2>
+      <div className="historial-encabezado">
+        <h2 className="historial-titulo">Historial</h2>
 
+        <button className="boton-volver" onClick={volver}>
+          Volver
+        </button>
+      </div>
       <div className="historial-lista">
         {sesiones.map((sesion) => (
           <div className="historial-sesion" key={sesion.id}>
@@ -61,9 +100,23 @@ function Historial({ actualizar, cambiarActualizacion }) {
                 <strong>Fin:</strong> {formatearFechaHora(sesion.fin)}
               </p>
 
-              <p>
-                <strong>Duración:</strong> {formatearDuracion(sesion.duracion)}
-              </p>
+              {sesionEditando === sesion.id ? (
+                <p>
+                  <strong>Duración:</strong>{" "}
+                  <input
+                    type="number"
+                    min="0"
+                    value={nuevaDuracion}
+                    onChange={(e) => setNuevaDuracion(e.target.value)}
+                  />{" "}
+                  minutos
+                </p>
+              ) : (
+                <p>
+                  <strong>Duración:</strong>{" "}
+                  {formatearDuracion(sesion.duracion)}
+                </p>
+              )}
 
               <p>
                 <strong>Estado:</strong>{" "}
@@ -74,14 +127,38 @@ function Historial({ actualizar, cambiarActualizacion }) {
             </div>
 
             <div className="historial-acciones">
-              {sesion.estado === "completada" && (
-                <button
-                  className="boton-cancelar"
-                  onClick={() => handleCancelar(sesion.id)}
-                >
-                  Cancelar
-                </button>
-              )}
+              {sesion.estado === "completada" &&
+                sesionEditando !== sesion.id && (
+                  <>
+                    <button
+                      className="boton-editar"
+                      onClick={() => iniciarEdicion(sesion)}
+                    >
+                      Editar
+                    </button>
+
+                    <button
+                      className="boton-cancelar"
+                      onClick={() => handleCancelar(sesion.id)}
+                    >
+                      Cancelar
+                    </button>
+                  </>
+                )}
+
+              {sesion.estado === "completada" &&
+                sesionEditando === sesion.id && (
+                  <>
+                    <button
+                      className="boton-guardar"
+                      onClick={() => handleEditarDuracion(sesion.id)}
+                    >
+                      Guardar
+                    </button>
+
+                    <button onClick={cancelarEdicion}>Cancelar</button>
+                  </>
+                )}
 
               {sesion.estado === "cancelada" && (
                 <button

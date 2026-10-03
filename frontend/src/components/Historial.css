@@ -2,8 +2,16 @@
   width: 100%;
 }
 
-.historial-titulo {
+.historial-encabezado {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
   margin-bottom: 24px;
+}
+
+.historial-titulo {
+  margin: 0;
 }
 
 /* Lista */
@@ -56,6 +64,25 @@
   color: #1f2937;
 }
 
+.historial-datos input {
+  width: 70px;
+
+  padding: 6px 8px;
+
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+
+  font-size: 14px;
+
+  box-sizing: border-box;
+}
+
+.historial-datos input:focus {
+  outline: none;
+
+  border-color: #9ca3af;
+}
+
 /* Estados */
 
 .estado-completada {
@@ -75,6 +102,8 @@
 .historial-acciones {
   display: flex;
   align-items: center;
+
+  gap: 8px;
 
   flex-shrink: 0;
 }
@@ -98,6 +127,26 @@
 
 .historial-acciones button:hover {
   transform: translateY(-1px);
+}
+
+.boton-editar {
+  background: #f3f4f6;
+
+  color: #374151;
+}
+
+.boton-editar:hover {
+  background: #e5e7eb;
+}
+
+.boton-guardar {
+  background: #dcfce7;
+
+  color: #15803d;
+}
+
+.boton-guardar:hover {
+  background: #bbf7d0;
 }
 
 .boton-cancelar {

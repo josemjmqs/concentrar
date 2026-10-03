@@ -1264,9 +1264,11 @@ function Temporizador({ actualizarDatos }) {
                 : textoBotonPrincipal}
           </button>
 
-          <button onClick={accionBotonSecundario}>
-            {textoBotonSecundario}
-          </button>
+          {alarmaActiva && (
+            <button onClick={accionBotonSecundario}>
+              {textoBotonSecundario}
+            </button>
+          )}
         </div>
       )}
 

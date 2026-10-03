@@ -2,10 +2,13 @@
   position: sticky;
   top: 0;
   z-index: 100;
+
   display: flex;
   justify-content: center;
   align-items: center;
+
   padding: 18px 0;
+
   background-color: #f9fafb;
 }
 
@@ -22,9 +25,9 @@
   width: 100%;
 }
 
-.boton-volver {
-  margin-bottom: 24px;
+/* Navegación del historial */
 
+.boton-volver {
   padding: 9px 16px;
 
   border: 1px solid #d1d5db;

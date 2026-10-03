@@ -3,6 +3,7 @@ import {
   obtenerSesiones,
   crearSesion,
   finalizarSesion,
+  editarDuracion,
   cancelarSesion,
   cancelarSesionEnProgreso,
   restaurarSesion,
@@ -15,6 +16,7 @@ const router = express.Router();
 router.get("/", verificarToken, obtenerSesiones);
 router.post("/", verificarToken, crearSesion);
 router.put("/:id", verificarToken, finalizarSesion);
+router.patch("/:id/duracion", verificarToken, editarDuracion);
 router.patch("/:id/cancelar", verificarToken, cancelarSesion);
 router.patch(
   "/:id/cancelar-en-progreso",
