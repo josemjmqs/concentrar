@@ -244,3 +244,62 @@ La API puede utilizar los siguientes códigos según el resultado de la solicitu
 | 401 | Falta autenticación o el token no es válido |
 | 404 | Recurso no encontrado |
 | 500 | Error interno del servidor |
+
+
+---
+
+## PATCH /api/sesiones/:id/duracion
+
+Edita la duración de una sesión completada.
+
+### Descripción
+
+Permite modificar la duración de una sesión perteneciente al usuario autenticado. Solo se pueden editar sesiones con estado `completada`.
+
+### Solicitud
+
+Encabezado:
+
+```
+Content-Type: application/json
+Authorization: Bearer <token>
+```
+
+Cuerpo:
+
+```json
+{
+  "duracion": 1500
+}
+```
+
+La duración se expresa en segundos y debe ser un número entero mayor o igual a 0.
+
+### Respuesta
+
+Código:
+
+```
+200 OK
+```
+
+Ejemplo:
+
+```json
+{
+  "id": 10,
+  "inicio": "2026-07-28T18:39:26.631Z",
+  "fin": "2026-07-28T18:40:04.687Z",
+  "duracion": 1500,
+  "estado": "completada"
+}
+```
+
+### Errores
+
+- `400 Bad Request`: el ID o la duración no son válidos.
+- `404 Not Found`: la sesión no existe o no pertenece al usuario autenticado.
+- `409 Conflict`: la sesión no está en estado `completada`.
+- `500 Internal Server Error`: error interno del servidor.
+
+La nueva duración se utiliza automáticamente en las estadísticas, ya que estas se calculan a partir del campo `duracion` de las sesiones completadas.
