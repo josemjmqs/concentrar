@@ -192,9 +192,10 @@ Ejemplo:
 | tiempoMes | integer | Tiempo de concentración completado durante el mes actual, en segundos |
 | sesionesCompletadas | integer | Cantidad total de sesiones completadas por el usuario |
 | sesionesHoy | integer | Cantidad de sesiones completadas durante el día actual |
-| tiempoPorDia | array | Tiempo de concentración completado por cada día del período mostrado |
+| tiempoPorDia | array | Tiempo de concentración completado por cada día de la semana actual |
+| tiempoPorDiaMes | array | Tiempo de concentración completado por cada día del mes actual |
 
-Cada elemento de `tiempoPorDia` contiene:
+Cada elemento de `tiempoPorDia` y `tiempoPorDiaMes` contiene:
 
 | Campo | Tipo | Descripción |
 | --- | --- | --- |
