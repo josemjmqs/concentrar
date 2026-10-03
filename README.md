@@ -21,7 +21,8 @@ El proyecto fue desarrollado de principio a fin como una aplicación web full st
 - Registro y finalización de sesiones de concentración.
 - Historial de sesiones.
 - Edición de la duración de sesiones completadas desde el historial.
-- Estadísticas de concentración.
+- Estadísticas de concentración con vistas semanal y mensual.
+- Visualización del tiempo de concentración de cada día mediante gráficos.
 - Notificaciones al finalizar los períodos del temporizador.
 - Progressive Web App (PWA) instalable desde el navegador.
 
@@ -29,7 +30,7 @@ El proyecto fue desarrollado de principio a fin como una aplicación web full st
 
 La aplicación está dividida en tres partes principales:
 
-- **Frontend:** interfaz desarrollada con React, responsable de la interacción con el usuario y del funcionamiento del temporizador.
+- **Frontend:** interfaz desarrollada con React, responsable de la interacción con el usuario y del funcionamiento del temporizador y las estadísticas.
 - **Backend:** API REST desarrollada con Node.js y Express, encargada de la autenticación y de la lógica de negocio.
 - **Base de datos:** PostgreSQL, utilizada para almacenar usuarios, sesiones y datos necesarios para las estadísticas.
 
@@ -107,8 +108,9 @@ Para ejecutar el proyecto localmente también es necesario configurar las variab
 La carpeta `docs/` contiene la documentación del proyecto, incluyendo:
 
 - Especificación del proyecto.
-- Diseño y decisiones de desarrollo.
-- Estructura de la base de datos.
+- Requisitos funcionales y no funcionales.
+- Modelo de datos.
+- Arquitectura de la aplicación.
 - Documentación de la API REST.
 
 ## 📌 Estado del proyecto
