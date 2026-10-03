@@ -20,6 +20,7 @@ El proyecto fue desarrollado de principio a fin como una aplicación web full st
 - Configuración personalizada de los períodos de trabajo y descanso.
 - Registro y finalización de sesiones de concentración.
 - Historial de sesiones.
+- Edición de la duración de sesiones completadas desde el historial.
 - Estadísticas de concentración.
 - Notificaciones al finalizar los períodos del temporizador.
 - Progressive Web App (PWA) instalable desde el navegador.
