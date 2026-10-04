@@ -75,12 +75,22 @@ function App() {
       <div className="pagina-historial">
         <div className="encabezado">
           <h1>Concentrar</h1>
+
+          <div className="encabezado-historial">
+            <h2>Historial</h2>
+
+            <button
+              className="boton-volver"
+              onClick={() => setMostrarHistorial(false)}
+            >
+              Volver
+            </button>
+          </div>
         </div>
 
         <Historial
           actualizar={actualizar}
           cambiarActualizacion={actualizarDatos}
-          volver={() => setMostrarHistorial(false)}
         />
       </div>
     );
