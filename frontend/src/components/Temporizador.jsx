@@ -5,6 +5,7 @@ import {
   obtenerSesionEnProgreso,
 } from "../services/api";
 import "./Temporizador.css";
+import { formatearDuracion } from "../utils/formatearDuracion";
 
 function Temporizador({ actualizarDatos }) {
   // Temporizador
@@ -632,6 +633,17 @@ function Temporizador({ actualizarDatos }) {
       setInicioTemporizador(null);
       inicioTemporizadorRef.current = null;
 
+      if (modo === "trabajo") {
+        localStorage.setItem(
+          "estadoTrabajo",
+          JSON.stringify({
+            duracionActual,
+            tiempoAcumulado: transcurrido,
+            pausado: true,
+          }),
+        );
+      }
+
       if (modo === "descanso") {
         guardarEstadoDescanso({
           inicioTemporizadorActual: null,
@@ -1226,7 +1238,7 @@ function Temporizador({ actualizarDatos }) {
         {tiempoTerminado ? (
           <div className="tiempo-extra">
             <span>Tiempo extra</span>
-            <h1>+{formatearTiempo(tiempoExtraAcumulado)}</h1>
+            <h1>+{formatearDuracion(tiempoExtraAcumulado)}</h1>
           </div>
         ) : (
           <h1>{formatearTiempo(tiempoRestante)}</h1>
