@@ -2,25 +2,6 @@
   width: 100%;
 }
 
-.historial-encabezado {
-  position: sticky;
-  top: 76px;
-  z-index: 90;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding: 16px 0;
-  margin-bottom: 24px;
-
-  background-color: #f9fafb;
-}
-
-.historial-titulo {
-  margin: 0;
-}
-
 /* Lista */
 
 .historial-lista {

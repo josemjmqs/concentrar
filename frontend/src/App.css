@@ -4,10 +4,10 @@
   z-index: 100;
 
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
 
-  padding: 18px 0;
+  padding: 18px 24px;
 
   background-color: #f9fafb;
 }
@@ -18,7 +18,21 @@
 
 .encabezado .menu {
   position: absolute;
-  right: 0;
+  right: 24px;
+}
+
+.encabezado-historial {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-top: 12px;
+}
+
+.encabezado-historial h2 {
+  margin: 0;
 }
 
 .pagina-historial {
@@ -59,7 +73,11 @@
 /* Responsive */
 
 @media (max-width: 600px) {
+  .encabezado {
+    padding: 18px 14px;
+  }
+
   .encabezado .menu {
-    right: 4px;
+    right: 14px;
   }
 }

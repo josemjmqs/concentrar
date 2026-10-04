@@ -8,7 +8,7 @@ import {
 import { formatearDuracion } from "../utils/formatearDuracion";
 import "./Historial.css";
 
-function Historial({ actualizar, cambiarActualizacion, volver }) {
+function Historial({ actualizar, cambiarActualizacion }) {
   const [sesiones, setSesiones] = useState([]);
   const [sesionEditando, setSesionEditando] = useState(null);
   const [nuevaDuracion, setNuevaDuracion] = useState("");
@@ -81,13 +81,6 @@ function Historial({ actualizar, cambiarActualizacion, volver }) {
 
   return (
     <div className="historial">
-      <div className="historial-encabezado">
-        <h2 className="historial-titulo">Historial</h2>
-
-        <button className="boton-volver" onClick={volver}>
-          Volver
-        </button>
-      </div>
       <div className="historial-lista">
         {sesiones.map((sesion) => (
           <div className="historial-sesion" key={sesion.id}>
