@@ -462,24 +462,39 @@ function Temporizador({ actualizarDatos }) {
     setAlarmaActiva(false);
 
     const id = idSesionRef.current;
-    const inicio = inicioTemporizadorRef.current;
 
-    if (!id || !inicio) {
+    if (!id) {
       return;
     }
 
-    const duracion = calcularSegundosTranscurridos(inicio);
+    let duracion;
+
+    if (pausado) {
+      duracion = tiempoAcumulado;
+    } else {
+      const inicio = inicioTemporizadorRef.current;
+
+      if (!inicio) {
+        return;
+      }
+
+      duracion = calcularSegundosTranscurridos(inicio);
+    }
 
     const fin = new Date();
 
     await finalizarSesion(id, duracion, fin);
+
     setInicioSesion(null);
     setInicioTemporizador(null);
     setTiempoAcumulado(0);
     setDuracionActual(0);
     setIdSesion(null);
+
     idSesionRef.current = null;
     inicioTemporizadorRef.current = null;
+
+    localStorage.removeItem("estadoTrabajo");
 
     actualizarDatos();
   }
