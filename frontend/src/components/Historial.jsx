@@ -71,7 +71,15 @@ function Historial({ actualizar, cambiarActualizacion }) {
   }
 
   function formatearFechaHora(fecha) {
+    if (!fecha) {
+      return "En curso";
+    }
+
     const fechaLocal = new Date(fecha);
+
+    if (Number.isNaN(fechaLocal.getTime())) {
+      return "En curso";
+    }
 
     return fechaLocal.toLocaleString("es-CL", {
       dateStyle: "short",

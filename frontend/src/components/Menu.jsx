@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./Menu.css";
 
 function Menu({
@@ -8,6 +8,22 @@ function Menu({
   cerrarSesion,
 }) {
   const [abierto, setAbierto] = useState(false);
+
+  const menuRef = useRef(null);
+
+  useEffect(() => {
+    function manejarClickFuera(evento) {
+      if (menuRef.current && !menuRef.current.contains(evento.target)) {
+        setAbierto(false);
+      }
+    }
+
+    document.addEventListener("mousedown", manejarClickFuera);
+
+    return () => {
+      document.removeEventListener("mousedown", manejarClickFuera);
+    };
+  }, []);
 
   function manejarSonidoAlarma() {
     mostrarSonidoAlarma();
@@ -25,7 +41,7 @@ function Menu({
   }
 
   return (
-    <div className="menu">
+    <div className="menu" ref={menuRef}>
       <button
         className="boton-menu"
         onClick={() => setAbierto(!abierto)}

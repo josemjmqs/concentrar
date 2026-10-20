@@ -33,7 +33,7 @@
 .tiempo-extra span {
   display: block;
   margin-bottom: 6px;
-
+  color: rgb(213, 4, 4);
   font-size: 13px;
   font-weight: 600;
   text-transform: uppercase;
@@ -58,10 +58,19 @@
 
 .acciones-tiempo-terminado {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+  justify-content: center;
   gap: 10px;
-  width: 100%;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.acciones-tiempo-terminado button {
+  flex: 0 1 auto;
+  white-space: nowrap;
+  min-width: 0;
 }
 
 /* Botón terminar sesión */
@@ -143,9 +152,24 @@
     font-size: 44px;
   }
 
+  /* Botones normales y terminar sesión */
   .acciones-temporizador button,
-  .acciones-tiempo-terminado button,
   .accion-terminar-sesion button {
     min-width: 140px;
+  }
+
+  /* Botones de tiempo terminado */
+  .acciones-tiempo-terminado {
+    width: 100%;
+    max-width: 100%;
+    gap: 6px;
+  }
+
+  .acciones-tiempo-terminado button {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 10px 6px;
+    font-size: 12px;
+    white-space: nowrap;
   }
 }

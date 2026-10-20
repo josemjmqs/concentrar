@@ -11,18 +11,13 @@ import "./App.css";
 
 function App() {
   const [actualizar, setActualizar] = useState(0);
-
   const [mostrarRegistro, setMostrarRegistro] = useState(false);
-
   const [autenticado, setAutenticado] = useState(
     localStorage.getItem("token") !== null,
   );
-
   const [mostrarConfiguracion, setMostrarConfiguracion] = useState(false);
-
   const [mostrarConfiguracionSonido, setMostrarConfiguracionSonido] =
     useState(false);
-
   const [mostrarHistorial, setMostrarHistorial] = useState(false);
 
   const actualizarDatos = () => {
@@ -70,52 +65,58 @@ function App() {
     );
   }
 
-  if (mostrarHistorial) {
-    return (
-      <div className="pagina-historial">
+  return (
+    <>
+      {/* La vista principal se oculta, pero el temporizador sigue montado. */}
+      <div
+        style={{
+          display: mostrarHistorial ? "none" : "block",
+        }}
+      >
         <div className="encabezado">
           <h1>Concentrar</h1>
 
-          <div className="encabezado-historial">
-            <h2>Historial</h2>
-
-            <button
-              className="boton-volver"
-              onClick={() => setMostrarHistorial(false)}
-            >
-              Volver
-            </button>
-          </div>
+          <Menu
+            mostrarHistorial={() => setMostrarHistorial(true)}
+            mostrarConfiguracion={() => setMostrarConfiguracion(true)}
+            mostrarSonidoAlarma={() => setMostrarConfiguracionSonido(true)}
+            cerrarSesion={cerrarSesion}
+          />
         </div>
 
-        <Historial
-          actualizar={actualizar}
-          cambiarActualizacion={actualizarDatos}
-        />
-      </div>
-    );
-  }
+        <div className="seccion-temporizador">
+          <Temporizador key={actualizar} actualizarDatos={actualizarDatos} />
+        </div>
 
-  return (
-    <>
-      <div className="encabezado">
-        <h1>Concentrar</h1>
-
-        <Menu
-          mostrarHistorial={() => setMostrarHistorial(true)}
-          mostrarConfiguracion={() => setMostrarConfiguracion(true)}
-          mostrarSonidoAlarma={() => setMostrarConfiguracionSonido(true)}
-          cerrarSesion={cerrarSesion}
-        />
+        <div className="seccion-estadisticas">
+          <Estadisticas actualizar={actualizar} />
+        </div>
       </div>
 
-      <div className="seccion-temporizador">
-        <Temporizador key={actualizar} actualizarDatos={actualizarDatos} />
-      </div>
+      {/* El historial aparece sin desmontar el temporizador. */}
+      {mostrarHistorial && (
+        <div className="pagina-historial">
+          <div className="encabezado">
+            <h1>Concentrar</h1>
 
-      <div className="seccion-estadisticas">
-        <Estadisticas actualizar={actualizar} />
-      </div>
+            <div className="encabezado-historial">
+              <h2>Historial</h2>
+
+              <button
+                className="boton-volver"
+                onClick={() => setMostrarHistorial(false)}
+              >
+                Volver
+              </button>
+            </div>
+          </div>
+
+          <Historial
+            actualizar={actualizar}
+            cambiarActualizacion={actualizarDatos}
+          />
+        </div>
+      )}
     </>
   );
 }

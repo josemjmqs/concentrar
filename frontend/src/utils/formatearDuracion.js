@@ -24,3 +24,17 @@ export function formatearDuracion(segundos = 0) {
 
   return texto.trim();
 }
+
+export function formatearTiempoTemporizador(segundos = 0) {
+  const horas = Math.floor(segundos / 3600);
+  const minutos = Math.floor((segundos % 3600) / 60);
+  const segundosRestantes = segundos % 60;
+
+  const tiempo = [
+    ...(horas > 0 ? [String(horas).padStart(2, "0")] : []),
+    String(minutos).padStart(2, "0"),
+    String(segundosRestantes).padStart(2, "0"),
+  ];
+
+  return tiempo.join(":");
+}
